@@ -1,9 +1,8 @@
 import React from "react"
-import { Spinner } from "react-bootstrap"
 
-const Loader = () => {
-    return (
-        <Spinner
+
+/* 
+  <Spinner
             animation='border'
             role='status'
             style={{
@@ -14,8 +13,10 @@ const Loader = () => {
             }}
         >
             <span className="sr-only"></span>
-        </Spinner>
-    )
+    </Spinner>
+*/
+const Loader = () => {
+    return (<div>LOADING...</div>)
 }
 
 export default Loader

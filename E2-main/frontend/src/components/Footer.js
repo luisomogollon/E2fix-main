@@ -3,7 +3,7 @@ import React from "react";
 export const Footer = () => {
   return (
     <footer>
-      <footer class="text-gray-600 body-font">
+      <footer class="text-gray-600 body-font bg-slate-700">
         <div class="container px-2 py-2 mx-auto flex items-center sm:flex-row flex-col">
           <button class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
             <svg
@@ -18,13 +18,13 @@ export const Footer = () => {
             >
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
-            <span class="ml-3 text-xl">AVA</span>
+            <span class="ml-3 text-gray-200 text-xl">AVA</span>
           </button>
-          <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+          <p class="text-sm  text-gray-200 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
             © 2022 AVA —
             <span
               href=""
-              class="text-gray-600 ml-1"
+              class="text-gray-200 ml-1"
               rel="noopener noreferrer"
               target="_blank"
             >

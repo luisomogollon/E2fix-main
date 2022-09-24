@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
 
-    <header class="text-gray-600 body-font">
+    <header class="text-gray-600 bg-slate-700 body-font">
       <div class="container mx-auto flex flex-wrap p-1 flex-col md:flex-row items-center">
         <button class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
           <svg
@@ -29,10 +29,10 @@ const Header = () => {
           >
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
           </svg>
-          <span class="ml-3 text-xl">AVA</span>
+          <span class="ml-3 text-gray-200 text-xl">AVA</span>
         </button>
         <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          <button class="mr-5 hover:text-gray-900">First Link</button>
+          <a class="mr-5 hover:text-gray-200">First Link</a>
           
          
         </nav>

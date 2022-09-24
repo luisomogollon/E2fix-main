@@ -1,23 +1,20 @@
-import React from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap"
-import { LinkContainer } from 'react-router-bootstrap'
-import { logout } from "../actions/userActions"
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../actions/userActions";
 
 const Header = () => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
-    const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
 
-    const logoutHandler = () => {
-        dispatch(logout())
-    }
-
-    return (
-        <header>
-            <Navbar bg='primary' variant='dark' expand='lg' collapseOnSelect>
+  return (
+    <header>
+      {/*<Navbar bg='primary' variant='dark' expand='lg' collapseOnSelect>
                 <Container>
                     <LinkContainer to='/'>
                         <Navbar.Brand>Aba.</Navbar.Brand>
@@ -46,8 +43,8 @@ const Header = () => {
                     </Navbar.Collapse>
 
                 </Container>
-            </Navbar>
-        </header>
-    )
-}
-export default Header
+            </Navbar>*/}
+    </header>
+  );
+};
+export default Header;

@@ -1,128 +1,139 @@
-import axios from "axios"
-import React, { useState, useEffect } from "react"
-import { Form, Button, Row, Col, Image } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import Message from "../components/Message"
-import Loader from "../components/Loader"
-import { getUserDetails, updateUserProfile } from "../actions/userActions"
-import { USER_DETAILS_FAIL, USER_UPDATE_PROFILE_RESET } from "../constants/userConstants"
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Message from "../components/Message";
+import Loader from "../components/Loader";
+import { getUserDetails, updateUserProfile } from "../actions/userActions";
+import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants";
 
 const ProfileScreen = () => {
-    const [userName, setUserName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
-    const [countryCode, setCountryCode] = useState("")
-    const [phone, setPhone] = useState("")
-    const [name, setName] = useState("")
-    const [lastname, setLastname] = useState("")
-    const [dateOfBirth, setDateOfBirth] = useState("")
-    const [country, setCountry] = useState("")
-    const [nickname, setNickname] = useState("")
-    const [description, setDescription] = useState("")
-    const [idPhoto, setIdPhoto] = useState("")
-    const [profilePicture, setProfilePicture] = useState("")
-    const [uploading, setUploading] = useState(false)
-    const [message, setMessage] = useState(null)
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [countryCode, setCountryCode] = useState("");
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [country, setCountry] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [description, setDescription] = useState("");
+  const [idPhoto, setIdPhoto] = useState("");
+  const [profilePicture, setProfilePicture] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [message, setMessage] = useState(null);
 
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const userDetails = useSelector((state) => state.userDetails)
-    const { loading, error, user } = userDetails
+  const userDetails = useSelector((state) => state.userDetails);
+  const { loading, error, user } = userDetails;
 
-    const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  var { success } = userUpdateProfile;
 
-    const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
-    var { success } = userUpdateProfile
-
-    useEffect(() => {
-        if (!userInfo) {
-            navigate("/")
-        } else {
-            if (!user || !user.name || success) {
-                dispatch({ type: USER_UPDATE_PROFILE_RESET })
-                dispatch(getUserDetails("profile"))
-
-            } else {
-                setUserName(user.userName)
-                setEmail(user.email)
-                setCountryCode(user.countryCode)
-                setPhone(user.phone)
-                setName(user.name)
-                setLastname(user.lastname)
-                setDateOfBirth(user.dateOfBirth.substring(0, 10))
-                setCountry(user.country)
-                setNickname(user.nickname)
-                setDescription(user.description)
-                setIdPhoto(user.idPhoto)
-                setProfilePicture(user.profilePicture)
-
-            }
-        }
-    }, [dispatch, navigate, userInfo, user, success])
-    const uploadProfilePicture = async (e) => {
-        const file = e.target.files[0]
-        const formData = new FormData()
-        formData.append('image', file)
-        setUploading(true)
-
-        try {
-            const config = {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            }
-
-            const { data } = await axios.post('/api/upload', formData, config)
-
-            setProfilePicture(data)
-            setUploading(false)
-        } catch (error) {
-            console.error(error)
-            setUploading(false)
-        }
+  useEffect(() => {
+    if (!userInfo) {
+      navigate("/");
+    } else {
+      if (!user || !user.name || success) {
+        dispatch({ type: USER_UPDATE_PROFILE_RESET });
+        dispatch(getUserDetails("profile"));
+      } else {
+        setUserName(user.userName);
+        setEmail(user.email);
+        setCountryCode(user.countryCode);
+        setPhone(user.phone);
+        setName(user.name);
+        setLastname(user.lastname);
+        setDateOfBirth(user.dateOfBirth.substring(0, 10));
+        setCountry(user.country);
+        setNickname(user.nickname);
+        setDescription(user.description);
+        setIdPhoto(user.idPhoto);
+        setProfilePicture(user.profilePicture);
+      }
     }
-    const uploadIdPhoto = async (e) => {
-        const file = e.target.files[0]
-        const formData = new FormData()
-        formData.append('image', file)
-        setUploading(true)
+  }, [dispatch, navigate, userInfo, user, success]);
+  const uploadProfilePicture = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
 
-        try {
-            const config = {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            }
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
 
-            const { data } = await axios.post('/api/upload', formData, config)
+      const { data } = await axios.post("/api/upload", formData, config);
 
-            setIdPhoto(data)
-            setUploading(false)
-        } catch (error) {
-            console.error(error)
-            setUploading(false)
-        }
+      setProfilePicture(data);
+      setUploading(false);
+    } catch (error) {
+      console.error(error);
+      setUploading(false);
     }
-    const submitHandler = (e) => {
-        e.preventDefault()
-        if (password !== confirmPassword) {
-            setMessage("Passwords do not match")
-        } else {
-            dispatch(updateUserProfile({
-                id: user._id, userName, email,
-                countryCode, phone, name, lastname, dateOfBirth, country,
-                nickname, description, idPhoto, profilePicture, password
-            }))
-        }
-    }
+  };
+  const uploadIdPhoto = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
 
-    return (
-        <Row>
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.post("/api/upload", formData, config);
+
+      setIdPhoto(data);
+      setUploading(false);
+    } catch (error) {
+      console.error(error);
+      setUploading(false);
+    }
+  };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setMessage("Passwords do not match");
+    } else {
+      dispatch(
+        updateUserProfile({
+          id: user._id,
+          userName,
+          email,
+          countryCode,
+          phone,
+          name,
+          lastname,
+          dateOfBirth,
+          country,
+          nickname,
+          description,
+          idPhoto,
+          profilePicture,
+          password,
+        })
+      );
+    }
+  };
+
+  return (
+    <>
+    FORM DE PROFILE
+      {/*<Row>
             <h2>User Profile</h2>
             {message && <Message variant='danger'>{message}</Message>}
             {error && <Message variant='danger'>{error}</Message>}
@@ -270,9 +281,9 @@ const ProfileScreen = () => {
             </Col>
             <Col md={3}>
             </Col>
+        </Row>*/}
+    </>
+  );
+};
 
-        </Row>
-    )
-}
-
-export default ProfileScreen
+export default ProfileScreen;

@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <footer>
       <footer class="text-gray-600 body-font bg-slate-700">
-        <div class="container px-2 py-2 mx-auto flex items-center sm:flex-row flex-col">
+        <div class="container px-1 py-2 mx-auto flex items-center sm:flex-row flex-col">
           <button class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -131,7 +131,7 @@ const ProfileScreen = () => {
   };
 
   return (
-    <section className="text-gray-600 body-font relative">
+    <section className="text-gray-600 body-font relative ">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-col text-center w-full mb-12">
           <h1 className="sm:text-3xl text-2xl font-medium title-font  text-gray-900">
@@ -139,7 +139,7 @@ const ProfileScreen = () => {
           </h1>
           <div className="container mx-auto flex px-5 py-7 items-center justify-center flex-col">
             <img
-              className="lg:w-3/6 md:w-3/6 w-6/6 mb-10 object-cover object-center rounded"
+              className="lg:w-3/6 md:w-3/6 w-6/6 mb-14 object-cover object-center rounded"
               alt="hero"
               src="https://dummyimage.com/720x600"
             />

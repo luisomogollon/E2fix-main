@@ -12,7 +12,7 @@ const App = () => {
       <Header />
       <main className="py-3">
           <Routes>
-            <Route path='/' element={<ProfileScreen />} exact />
+            <Route path='/' element={<LoginScreen />} exact />
             <Route path='/profile' element={<ProfileScreen />} exact />
           </Routes>
       </main>

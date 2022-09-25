@@ -18,8 +18,8 @@ const LoginScreen = () => {
       navigate(redirect);
     }
   }, [navigate, userInfo, redirect]);
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const handleClick = (e) => {
+    if(email && password)
     dispatch(login(email, password));
   };
   return (
@@ -47,17 +47,22 @@ const LoginScreen = () => {
               <input
                 type="text"
                 name="email"
+                value={email}
                 class="block w-full px-4 py-3 mb-4 border border-2 border-transparent border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
                 placeholder="Email address"
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type="password"
                 name="password"
-                class="block w-full px-4 py-3 mb-4 border border-2 border-transparent border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-                placeholder="Password"
+                value={password}
+                class="block w-full px-4 py-3 mb-4  border-2 border-transparent border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                placeholder="Enter password"
+                onChange={(e) => setPassword(e.target.value)}
               />
               <div class="block">
-                <button class="w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg">
+                <button class="w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg"
+                onClick={handleClick}>
                   Log Me In
                 </button>
               </div>

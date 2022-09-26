@@ -170,6 +170,7 @@ const ProfileScreen = () => {
               </div>
             </div>
           )}
+          
           <div className="container mx-auto flex px-5 py.7 items-center justify-center flex-col">
             <img
               className="lg:w-3/6 md:w-3/6 w-6/10 mb-2 object-cover o.ject-center rounded"
@@ -392,6 +393,7 @@ const ProfileScreen = () => {
                   />
                   {uploading && <Loader />}
                 </div>
+
               </div>
             </div>
           </div>

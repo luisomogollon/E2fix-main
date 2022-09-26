@@ -2,7 +2,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer>
+ 
       <footer className="text-gray-600 body-font bg-slate-700">
         <div className="container px-1 py-2 mx-auto flex items-center sm:flex-row flex-col">
           <button className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
@@ -55,7 +55,7 @@ export const Footer = () => {
           </span>
         </div>
       </footer>
-    </footer>
+    
   );
 };
 

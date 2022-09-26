@@ -40,11 +40,21 @@ const LoginScreen = () => {
               <h3 className="mb-6 text-2xl font-medium text-center">
                 Sign in to your Account
               </h3>
+              {loading && (
+                <div class="flex justify-center items-center py-2 ">
+                  <div
+                    class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+                    role="status"
+                  >
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              )}
               <input
                 type="text"
                 name="email"
                 value={email}
-                className="block w-full px-4 py-3 mb-4 border border-2 border-transparent border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                className="block w-full px-4 py-3 mb-4  border-2 border-transparent border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
                 placeholder="Email address"
                 onChange={(e) => setEmail(e.target.value)}
               />

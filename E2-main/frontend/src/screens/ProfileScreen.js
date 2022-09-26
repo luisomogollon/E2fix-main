@@ -129,62 +129,101 @@ const ProfileScreen = () => {
       );
     }
   };
-
   return (
     <section className="text-gray-600 body-font relative ">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-col text-center w-full mb-12">
           <h1 className="sm:text-3xl text-2xl font-medium title-font  text-gray-900">
             Profile
+            
           </h1>
+          
           <div className="container mx-auto flex px-5 py-7 items-center justify-center flex-col">
             <img
-              className="lg:w-3/6 md:w-3/6 w-6/6 mb-14 object-cover object-center rounded"
-              alt="hero"
-              src="https://cdn.devdojo.com/images/december2020/productivity.png"
+            
+              className="lg:w-3/6 md:w-3/6 w-6/6 mb-2 object-cover object-center rounded"
+              src={profilePicture}
+              alt="Profile Pic"
+              width="80%"
+              onChange={uploadProfilePicture}
             />
-            <div className="text-center lg:w-1/3 w-full"></div>
+            <input
+              className="block w-70 px-1 py-1 mb-4 bg-gray-200 border-2   rounded-sm border-gray-300 outline-none focus:border-indigo-500"
+              aria-describedby="user_avatar_help"
+              label="Choose file"
+              type="file"
+              custom
+              onChange={uploadProfilePicture}
+            />
+            {uploading && <Loader />}
 
-            <div className="lg:w-1/2 md:w-2/3 flex mx-auto mt-2 text-start">
+            <div className="text-center lg:w-1/3 w-full"></div>
+            <div className="lg:w-1/2 md:w-2/3 flex mx-auto mt-10 text-start">
               <div className="flex flex-wrap -m-8">
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="name" class="leading-7 text-sm text-gray-600">
-                      Email
+                      UserName
                     </label>
+
                     <input
                       type="text"
                       id="name"
+                      placeholder="Enter username"
+                      value={userName}
+                      onChange={(e) => setUserName(e.target.value)}
                       name="name"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
+
+                <div className="p-2 w-1/2">
+                  <div className="relative">
+                    <label for="email" class="leading-7 text-sm text-gray-600">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="Enter email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      name="email"
+                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                  </div>
+                </div>
+
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="email" class="leading-7 text-sm text-gray-600">
                       Password
                     </label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
+                      type="password"
+                      placeholder="Enter password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
+                
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="email" class="leading-7 text-sm text-gray-600">
                       Confirm Pass
                     </label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
+                      type="password"
+                      placeholder="Confirm password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
+
                 </div>
                 <div className="p-2 w-1/2">
                   <div className="relative">
@@ -192,61 +231,70 @@ const ProfileScreen = () => {
                       Last Name{" "}
                     </label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
+                      type="name"
+                      placeholder="Enter lastname"
+                      value={lastname}
+                      onChange={(e) => setLastname(e.target.value)}
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
+                
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="email" class="leading-7 text-sm text-gray-600">
                       Date Of Birth
                     </label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
+                      type="date"
+                      placeholder="Enter date"
+                      value={dateOfBirth}
+                      onChange={(e) => setDateOfBirth(e.target.value)}
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
+
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="email" class="leading-7 text-sm text-gray-600">
                       Country
                     </label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
+                      type="text"
+                      placeholder="Enter country"
+                      value={country}
+                      onChange={(e) => setCountry(e.target.value)}
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
+
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="email" class="leading-7 text-sm text-gray-600">
                       Country Code
                     </label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
+                      type="number"
+                      placeholder="Enter country code"
+                      value={countryCode}
+                      onChange={(e) => setCountryCode(e.target.value)}
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
+
                 <div className="p-2 w-1/2">
                   <div className="relative">
                     <label for="email" class="leading-7 text-sm text-gray-600">
                       Phone
                     </label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
+                      type="number"
+                      placeholder="Enter phone number"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -258,18 +306,30 @@ const ProfileScreen = () => {
                     ID
                   </h1>
                 </div>
-                <div className="container mx-auto flex  items-center justify-center ">
+
+                <div className="container mx-auto flex flex-col items-center justify-center ">
                   <img
-                    className="lg:w-2/6 md:w-3/6 w-6/6 mb-14 object-cover object-center rounded"
-                    alt="hero"
-                    src="https://cdn.devdojo.com/images/december2020/productivity.png"
+                    className="lg:w-3/6 md:w-3/6 w-6/6 mb-14 object-cover object-center rounded"
+                    src={idPhoto}
+                    alt={idPhoto}
                   />
+                    <input
+              className="block w-70 px-1 py-1 mb-4 bg-gray-200 border-2   rounded-sm border-gray-300 outline-none focus:border-indigo-500"
+              aria-describedby="user_avatar_help"
+              label="Choose file"
+              type="file"
+              custom
+              onChange={uploadIdPhoto}
+            />
+           {uploading && <Loader />}
+                  
                 </div>
+                
                 <div className="container mx-auto flex  items-center justify-center ">
                   <button class="bg-slate-500 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                   
                     <span>UPDATE</span>
                   </button>
+
                 </div>
               </div>
             </div>

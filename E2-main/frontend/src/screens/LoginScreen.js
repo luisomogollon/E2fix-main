@@ -91,7 +91,7 @@ const LoginScreen = () => {
               />
               <div className="block">
                 <button
-                  className="w-full px-3 py-4 font-medium text-white bg-blue-600  hover:bg-blue-400 rounded-lg"
+                  className="w-full px-3 py-4 mt-10 mb-4 font-medium text-white bg-blue-600  hover:bg-blue-400 rounded-lg"
                   onClick={handleClick}
                 >
                   Log In

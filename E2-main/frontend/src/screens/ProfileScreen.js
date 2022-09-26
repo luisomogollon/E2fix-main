@@ -135,18 +135,47 @@ const ProfileScreen = () => {
         <div className="flex flex-col text-center w-full mb-12">
           <h1 className="sm:text-3xl text-2xl font-medium title-font  text-gray-900">
             Profile
-            
           </h1>
-          
+          {error && (
+            <div
+              className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+              role="alert"
+            >
+              <span className="font-medium">Danger alert!</span> Change a few
+              things up and try submitting again.
+            </div>
+          )}
+
+          {success && (
+            <div
+              className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+              role="alert"
+            >
+              <span className="font-medium">Success alert!</span> Change a few
+              things up and try submitting again.
+            </div>
+          )}
+
+          {loading && (
+            <div className="flex justify-center items-center py-2 ">
+              <div
+                className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+                role="status"
+              >
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          )}
+
           <div className="container mx-auto flex px-5 py-7 items-center justify-center flex-col">
             <img
-            
               className="lg:w-3/6 md:w-3/6 w-6/10 mb-2 object-cover object-center rounded"
               src={profilePicture}
               alt="Profile Pic"
               width="100%"
               onChange={uploadProfilePicture}
             />
+
             <input
               className=" lg:w-2/5 w-10/12 px-1 flex py-1 mb-4 bg-gray-200 border-2   rounded-sm border-gray-300 outline-none focus:border-indigo-500"
               aria-describedby="user_avatar_help"
@@ -155,6 +184,7 @@ const ProfileScreen = () => {
               custom
               onChange={uploadProfilePicture}
             />
+
             {uploading && <Loader />}
 
             <div className="text-center lg:w-1/3 w-full"></div>
@@ -162,7 +192,7 @@ const ProfileScreen = () => {
               <div className="flex flex-wrap -m-8">
                 <div className="p-2 w-1/2">
                   <div className="relative">
-                    <label for="name" class="leading-7 text-sm text-gray-600">
+                    <label htmlFor="name" className="leading-7 text-sm text-gray-600">
                       UserName
                     </label>
 
@@ -173,14 +203,14 @@ const ProfileScreen = () => {
                       value={userName}
                       onChange={(e) => setUserName(e.target.value)}
                       name="name"
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
 
                 <div className="p-2 w-1/2">
                   <div className="relative">
-                    <label for="email" class="leading-7 text-sm text-gray-600">
+                    <label htmlFor="email" className="leading-7 text-sm text-gray-600">
                       Email
                     </label>
                     <input
@@ -190,14 +220,14 @@ const ProfileScreen = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       name="email"
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
 
                 <div className="p-2 w-1/2">
                   <div className="relative">
-                    <label for="email" class="leading-7 text-sm text-gray-600">
+                    <label htmlFor="email" className="leading-7 text-sm text-gray-600">
                       Password
                     </label>
                     <input
@@ -205,14 +235,14 @@ const ProfileScreen = () => {
                       placeholder="Enter password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                
+
                 <div className="p-2 w-1/2">
                   <div className="relative">
-                    <label for="email" class="leading-7 text-sm text-gray-600">
+                    <label htmlFor="email" className="leading-7 text-sm text-gray-600">
                       Confirm Pass
                     </label>
                     <input
@@ -220,14 +250,14 @@ const ProfileScreen = () => {
                       placeholder="Confirm password"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
-
                 </div>
+
                 <div className="p-2 w-1/2">
                   <div className="relative">
-                    <label for="email" class="leading-7 text-sm text-gray-600">
+                    <label htmlFor="email" className="leading-7 text-sm text-gray-600">
                       Last Name{" "}
                     </label>
                     <input
@@ -235,14 +265,14 @@ const ProfileScreen = () => {
                       placeholder="Enter lastname"
                       value={lastname}
                       onChange={(e) => setLastname(e.target.value)}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                
+
                 <div className="p-2 w-1/2">
                   <div className="relative">
-                    <label for="email" class="leading-7 text-sm text-gray-600">
+                    <label htmlFor="email" className="leading-7 text-sm text-gray-600">
                       Date Of Birth
                     </label>
                     <input
@@ -250,14 +280,14 @@ const ProfileScreen = () => {
                       placeholder="Enter date"
                       value={dateOfBirth}
                       onChange={(e) => setDateOfBirth(e.target.value)}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
 
                 <div className="p-2 w-1/2">
                   <div className="relative">
-                    <label for="email" class="leading-7 text-sm text-gray-600">
+                    <label htmlFor="email" className="leading-7 text-sm text-gray-600">
                       Country
                     </label>
                     <input
@@ -265,14 +295,14 @@ const ProfileScreen = () => {
                       placeholder="Enter country"
                       value={country}
                       onChange={(e) => setCountry(e.target.value)}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
 
                 <div className="p-2 w-1/2">
                   <div className="relative">
-                    <label for="email" class="leading-7 text-sm text-gray-600">
+                    <label htmlFor="email" className="leading-7 text-sm text-gray-600">
                       Country Code
                     </label>
                     <input
@@ -280,14 +310,14 @@ const ProfileScreen = () => {
                       placeholder="Enter country code"
                       value={countryCode}
                       onChange={(e) => setCountryCode(e.target.value)}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
 
                 <div className="p-2 w-1/2">
                   <div className="relative">
-                    <label for="email" class="leading-7 text-sm text-gray-600">
+                    <label htmlFor="email" className="leading-7 text-sm text-gray-600">
                       Phone
                     </label>
                     <input
@@ -295,9 +325,21 @@ const ProfileScreen = () => {
                       placeholder="Enter phone number"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
+                </div>
+
+                <div className="container mx-auto flex  items-center justify-center ">
+                  <button
+                    type="password"
+                    placeholder="Confirm password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className="bg-slate-500 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 mt-3 rounded inline-flex items-center"
+                  >
+                    UPDATE
+                  </button>
                 </div>
 
                 <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center"></div>
@@ -313,25 +355,18 @@ const ProfileScreen = () => {
                     src={idPhoto}
                     alt={idPhoto}
                   />
-                    <input
-              className="block lg:w-4/6 w-10/12 px-1 py-2 mb-3 mt-1 bg-gray-200 border-2   rounded-sm border-gray-300 outline-none focus:border-indigo-500"
-              aria-describedby="user_avatar_help"
-              label="Choose file"
-              type="file"
-              custom
-              onChange={uploadIdPhoto}
-            />
-           {uploading && <Loader />}
-                  
-                </div>
-                
-                <div className="container mx-auto flex  items-center justify-center ">
-                  <button class="bg-slate-500 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                    <span>UPDATE</span>
-                  </button>
-
+                  <input
+                    className="block lg:w-4/6 w-10/12 px-1  mb-3 mt-1 bg-gray-200 border-2   rounded-sm border-gray-300 outline-none focus:border-indigo-500"
+                    aria-describedby="user_avatar_help"
+                    label="Choose file"
+                    type="file"
+                    custom
+                    onChange={uploadIdPhoto}
+                  />
+                  {uploading && <Loader />}
                 </div>
               </div>
+
             </div>
           </div>
         </div>

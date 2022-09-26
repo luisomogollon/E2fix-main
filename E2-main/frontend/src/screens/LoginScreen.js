@@ -26,29 +26,28 @@ const LoginScreen = () => {
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col items-center md:flex-row">
           <div className="w-full space-y-5 md:w-3/5 md:pr-16">
-            <p className="font-medium text-blue-500 uppercase">Building</p>
+            <p className="font-medium text-blue-500 uppercase">ABA</p>
             <h2 className="text-2xl font-extrabold leading-none text-black sm:text-3xl md:text-5xl">
-              Changing The Way
+              User Database
             </h2>
             <p className="text-xl text-gray-600 md:pr-16">
-              Learn how to engage with your visitors and teach them about your
+              log in here with your data
             </p>
           </div>
 
           <div className="w-full mt-16 md:mt-0 md:w-2/5">
             <div className="relative z-10 h-auto p-8 py-10 overflow-hidden bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7">
-              <h3 className="mb-6 text-2xl font-medium text-center">
-                Sign in to your Account
-              </h3>
+              <h3 className="mb-6 text-2xl font-medium text-center">Sign in</h3>
               {error && (
                 <div
                   className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
                   role="alert"
                 >
-                  <span className="font-medium">Danger alert!</span> Change a few
-                  things up and try submitting again.
+                  <span className="font-medium">Danger alert!</span> Change a
+                  few things up and try submitting again.
                 </div>
               )}
+              
               {loading && (
                 <div className="flex justify-center items-center py-2 ">
                   <div
@@ -59,6 +58,7 @@ const LoginScreen = () => {
                   </div>
                 </div>
               )}
+
               <input
                 type="text"
                 name="email"
@@ -77,10 +77,10 @@ const LoginScreen = () => {
               />
               <div className="block">
                 <button
-                  className="w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg"
+                  className="w-full px-3 py-4 font-medium text-white bg-blue-600  hover:bg-blue-400 rounded-lg"
                   onClick={handleClick}
                 >
-                  Log Me In
+                  Log In
                 </button>
               </div>
               <p className="w-full mt-4 text-sm text-center text-gray-500">

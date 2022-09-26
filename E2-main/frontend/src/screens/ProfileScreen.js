@@ -141,14 +141,14 @@ const ProfileScreen = () => {
           <div className="container mx-auto flex px-5 py-7 items-center justify-center flex-col">
             <img
             
-              className="lg:w-3/6 md:w-3/6 w-6/6 mb-2 object-cover object-center rounded"
+              className="lg:w-3/6 md:w-3/6 w-6/10 mb-2 object-cover object-center rounded"
               src={profilePicture}
               alt="Profile Pic"
-              width="80%"
+              width="100%"
               onChange={uploadProfilePicture}
             />
             <input
-              className="block w-70 px-1 py-1 mb-4 bg-gray-200 border-2   rounded-sm border-gray-300 outline-none focus:border-indigo-500"
+              className=" lg:w-2/5 w-10/12 px-1 flex py-1 mb-4 bg-gray-200 border-2   rounded-sm border-gray-300 outline-none focus:border-indigo-500"
               aria-describedby="user_avatar_help"
               label="Choose file"
               type="file"
@@ -309,12 +309,12 @@ const ProfileScreen = () => {
 
                 <div className="container mx-auto flex flex-col items-center justify-center ">
                   <img
-                    className="lg:w-3/6 md:w-3/6 w-6/6 mb-14 object-cover object-center rounded"
+                    className="lg:w-4/6 md:w-3/6 w-6/6  object-cover object-center rounded"
                     src={idPhoto}
                     alt={idPhoto}
                   />
                     <input
-              className="block w-70 px-1 py-1 mb-4 bg-gray-200 border-2   rounded-sm border-gray-300 outline-none focus:border-indigo-500"
+              className="block lg:w-4/6 w-10/12 px-1 py-2 mb-3 mt-1 bg-gray-200 border-2   rounded-sm border-gray-300 outline-none focus:border-indigo-500"
               aria-describedby="user_avatar_help"
               label="Choose file"
               type="file"

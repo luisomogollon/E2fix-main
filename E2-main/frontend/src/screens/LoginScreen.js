@@ -40,13 +40,22 @@ const LoginScreen = () => {
               <h3 className="mb-6 text-2xl font-medium text-center">
                 Sign in to your Account
               </h3>
+              {error && (
+                <div
+                  className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                  role="alert"
+                >
+                  <span className="font-medium">Danger alert!</span> Change a few
+                  things up and try submitting again.
+                </div>
+              )}
               {loading && (
-                <div class="flex justify-center items-center py-2 ">
+                <div className="flex justify-center items-center py-2 ">
                   <div
-                    class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+                    className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
                     role="status"
                   >
-                    <span class="visually-hidden">Loading...</span>
+                    <span className="visually-hidden">Loading...</span>
                   </div>
                 </div>
               )}

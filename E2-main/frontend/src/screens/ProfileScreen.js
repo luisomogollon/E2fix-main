@@ -23,7 +23,9 @@ const ProfileScreen = () => {
   const [idPhoto, setIdPhoto] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
   const [uploading, setUploading] = useState(false);
-  const [message, setMessage] = useState(null);
+  const [alertMessage, setMessage] = useState({ message: "", variant: "" });
+
+  const 
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -104,57 +106,47 @@ const ProfileScreen = () => {
       setUploading(false);
     }
   };
+
   const submitHandler = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setMessage("Passwords do not match");
-    } else {
-      dispatch(
-        updateUserProfile({
-          id: user._id,
-          userName,
-          email,
-          countryCode,
-          phone,
-          name,
-          lastname,
-          dateOfBirth,
-          country,
-          nickname,
-          description,
-          idPhoto,
-          profilePicture,
-          password,
-        })
-      );
+    if (!password) {
+      setMessage({ message: "Empty password field", variant: "danger" });
+      return;
     }
+    if (password !== confirmPassword) {
+      setMessage({ message: "Passwords do not match", variant: "danger" });
+      return;
+    }
+    dispatch(
+      updateUserProfile({
+        id: user._id,
+        userName,
+        email,
+        countryCode,
+        phone,
+        name,
+        lastname,
+        dateOfBirth,
+        country,
+        nickname,
+        description,
+        idPhoto,
+        profilePicture,
+        password,
+      })
+    );
+    setMessage({ message: "Profile successfully updated!" });
   };
+
   return (
-    <section className="text-gray-600 body-font relative ">
+    <section className="text-gray-600 body-font relative">
+      {alertMessage.message && <Message {...alertMessage} />}
+      {error && <Message message={"Error"} variant="danger" />}
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-col text-center w-full mb-12">
           <h1 className="sm:text-3xl text-2xl font-medium title-font  text-gray-900">
             Profile
           </h1>
-          {error && (
-            <div
-              className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-              role="alert"
-            >
-              <span className="font-medium">Danger alert!</span> Change a few
-              things up and try submitting again.
-            </div>
-          )}
-
-          {success && (
-            <div
-              className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
-              role="alert"
-            >
-              <span className="font-medium">Success alert!</span> Change a few
-              things up and try submitting again.
-            </div>
-          )}
 
           {loading && (
             <div className="text-center">
@@ -193,7 +185,7 @@ const ProfileScreen = () => {
               aria-describedby="user_avatar_help"
               label="Choose file"
               type="file"
-              custom
+              custom="true"
               onChange={uploadProfilePicture}
             />
 
@@ -371,10 +363,7 @@ const ProfileScreen = () => {
 
                 <div className="container mx-auto flex  items-center justify-center ">
                   <button
-                    type="password"
-                    placeholder="Confirm password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    onClick={submitHandler}
                     className="bg-slate-500 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 mt-3 rounded inline-flex items-center"
                   >
                     UPDATE
@@ -399,7 +388,7 @@ const ProfileScreen = () => {
                     aria-describedby="user_avatar_help"
                     label="Choose file"
                     type="file"
-                    custom
+                    custom="true"
                     onChange={uploadIdPhoto}
                   />
                   {uploading && <Loader />}

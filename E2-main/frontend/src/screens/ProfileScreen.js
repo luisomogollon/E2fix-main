@@ -348,7 +348,7 @@ const ProfileScreen = () => {
                       htmlFor="email"
                       className="leading-7 text-sm text-gray-600"
                     >
-                      Phone
+                      Phone.
                     </label>
                     <input
                       type="number"

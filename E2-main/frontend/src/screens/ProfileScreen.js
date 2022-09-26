@@ -25,19 +25,26 @@ const ProfileScreen = () => {
   const [uploading, setUploading] = useState(false);
   const [alertMessage, setMessage] = useState({ message: "", variant: "" });
 
-  const 
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
-
+  if (error) {
+    setMessage({ message: error, variant: "danger" });
+  }
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
   var { success } = userUpdateProfile;
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMessage({ message: "", variant: "" });
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [alertMessage]);
 
   useEffect(() => {
     if (!userInfo) {
@@ -141,14 +148,7 @@ const ProfileScreen = () => {
   return (
     <section className="text-gray-600 body-font relative">
       {alertMessage.message && <Message {...alertMessage} />}
-      {error && <Message message={"Error"} variant="danger" />}
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-col text-center w-full mb-12">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font  text-gray-900">
-            Profile
-          </h1>
-
-          {loading && (
+      {loading && (
             <div className="text-center">
               <div role="status">
                 <svg
@@ -170,18 +170,17 @@ const ProfileScreen = () => {
               </div>
             </div>
           )}
-
-          <div className="container mx-auto flex px-5 py-7 items-center justify-center flex-col">
+          <div className="container mx-auto flex px-5 py.7 items-center justify-center flex-col">
             <img
-              className="lg:w-3/6 md:w-3/6 w-6/10 mb-2 object-cover object-center rounded"
+              className="lg:w-3/6 md:w-3/6 w-6/10 mb-2 object-cover o.ject-center rounded"
               src={profilePicture}
               alt="Profile Pic"
               width="100%"
-              onChange={uploadProfilePicture}
+            onChange={uploadProfilePicture}
             />
 
             <input
-              className=" lg:w-2/5 w-10/12 px-1 flex py-1 mb-4 bg-gray-200 border-2   rounded-sm border-gray-300 outline-none focus:border-indigo-500"
+              className=" lg:w-2/5 w-10/12 px-1 fl.x py-1 mb-4 bg-gray-200 border-2   rounded-sm border-gray-300 outline-none focus:border-indigo-500"
               aria-describedby="user_avatar_help"
               label="Choose file"
               type="file"
